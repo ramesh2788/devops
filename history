@@ -1,0 +1,161 @@
+history:
+ls
+    2  touch file
+    3  ls
+    4  mkdir directory
+    5  ls
+    6  ll
+    7  mkdir ramesh
+    8  ll
+    9  mkdir deva
+   10  ll
+   11  cd deva/
+   12  cd  ..
+   13  mv file deva/
+   14  cd deva/
+   15  ls
+   16  cat>file
+   17  cat file
+   18  cat >>file
+   19  cat file
+   20  cat >file
+   21  cat file
+   22  history
+   23  ll
+   24  touch file1
+   25  cat file
+   26  cp file file1
+   27  ls
+   28  cat file1
+   29  cat >> file file3
+   30  clear
+   31  ls
+   32  rm file
+   33  ll
+   34  rm -f file1 
+   35  cd ..
+   36  ls
+   37  ll
+   38  rmdir directory/
+   39  ll
+   40  touch file{1..10}
+   41  ll
+   42  touch ramesh ram raj suresh
+   43  ll
+   44  rm -f *
+   45  ll
+   46  touch file
+   47  ll
+   48  rm file
+   49  ls
+   50  touch test{1..8}
+   51  ll
+   52  rm -rf *
+   53  ls
+   54  mkdir ramesh
+   55  cd ramesh
+   56  touch dev{1..5}
+   57  ls
+   58  ll
+   59  chmod 777 dev2
+   60  ll
+   61  chmod 400 dev1
+   62  ll
+   63  history
+   64  pwd
+   65  cd /
+   66  ls
+   67  cd home/
+   68  ls
+   69  cd ec2-user/
+   70  pwd
+   71  cd
+   72  pwd
+   73  cd opt
+   74  ls
+   75  cd /opt
+   76  cd ..
+   77  cd 
+   78  pwd
+   79  mkdir -p dir1/dir2/dir3
+   80  ls
+   81  cd dir1/
+   82  ls
+   83  cd dir2/
+   84  ls
+   85  cd dir3/
+   86  ls
+   87  cd ../../
+   88  cd
+   89  tree
+   90  cd dir1/dir2/dir3/
+   91  pwd
+   92  cd
+   93  pwd
+   94  rmdir ramesh/
+   95  rmdir -r ramesh/
+   96  rmdir -f ramesh/
+   97  rm -rf ramesh/
+   98  rmdir -p dir1/dir2/dir3/
+   99  mkdir dir1/dir2/dir3
+  100  mkdir -p dir1/dir2/dir3
+  101  tree
+  102  touch file{1..5}
+  103  ls
+  104  ll
+  105  cat>file1
+  106  cat file1
+  107  more file1
+  108  git init
+  109  ls
+  110  ls -al
+  111  ll
+  112  touch .file6
+  113  ll
+  114  ls -al
+  115  mv .file6 file6
+  116  ll
+  117  mkdir .folder
+  118  ls -al
+  119  rmdir .folder/
+  120  ls -al
+  121  cd dir1/
+  122  ll
+  123  touch file{1..5}
+  124  ls
+  125  ll
+  126  rm -rf *
+  127  ll
+  128  uname
+  129  cd ..
+  130  ls
+  131  ll
+  132  cd /
+  133  la
+  134  ls
+  135  cd
+  136  cat /etc/passwd
+  137  useradd rameh
+  138  cat /etc/passwd
+  139  passwd ramesh
+  140  userdel rameh
+  141  cat /etc/passwd
+  142  useradd ramesh 
+  143  passwd ramesh
+  144  su - ramesh
+  145  vim sudoers
+  146  visudo
+  147  su - ramesh
+  148  ls
+  149  cat file1
+  150  cat >> file1
+  151  cat file1
+  152  vi file1
+  153  cat file1
+  154  cat -n file1
+  155  cat filr1
+  156  cat file1
+  157  vim file1
+  158  visudo
+  159  nano file1
+  160  cat file1
