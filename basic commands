@@ -91,4 +91,4 @@ cat :to see the content of file
 cat>file :enter the content into the file
 cp file1 file2
 mv file /opt :move the file from one location to another location
-mv master main : to remae
+mv master main : to rename
