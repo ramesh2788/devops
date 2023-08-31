@@ -1,0 +1,94 @@
+linux basic commands:
+ls   
+ls -al
+ll
+useradd ramu
+passwd ramu
+visudo
+esc+:100 add the ramu user in sudoers file
+    ramu ALL=(ALL)   NOPASSWD: ALL
+then save and exit(esc+wq!)
+file commands:
+touch abc.txt
+ls
+mkdir dir
+cd dir/
+rmdir dir
+ls -al
+mkdir -p dir1/dir2/dir3/dir4
+rmdir -p dir1/dir2/dir3/dir4
+
+HIDDEN FILES or DIRECTORIES:
+hidden files are  starting with .
+examples
+.git,.bashrc,.bashprofile
+any file or directory starting with . that file or directory,those are not visible to us so we have to use the command
+ls -a or ls-al
+
+FILE PERMISSIONS:
+-rw-rw-r-- 1 ec2-user ec2-user 0 Aug 31 08:32 file
+
+-  rw- rw- r-- 
+- indicates the file type
+rw- first indicates user permissions
+rw- second indicates group permissions
+r-- third indicates others permissions
+
+ec2-user ec2user  userowner groupowner
+
+read: he can able to open the file permission                          r=4
+
+write: he has the permission to modify the content and rename          w=2
+
+exicute:he has the permission for run the programe:                      x=1
+
+change the permissions to file:
+chmod 400 file
+
+change the ownership of file
+chown root file
+change the ownership of the group
+chgrp root file
+change the user and grouop ownership at single time
+chowm ec2-user:ec2-user file
+
+file editors:
+vi/vim editor
+command mode: 
+gg              : goto top the content of the file
+shift+g         : goto bottom the content of the file
+i               :insert mode
+I                :curser go to start of the line
+A                :curser goto end of the line
+yy                :to copy thecontent
+p                 : paste the content
+dd                :to delete entire line
+u                 : undo changes
+esc+shfit+:100    : go to 100 line
+/word             :to search the word in the content
+esc+shfit+:%s/word/anotherword: to replace the word
+
+save mode:
+esc+shift+:wq!
+w :save
+q: quit
+!:forcefully 
+
+
+nano editor
+save mode
+ctrl+x and y,enter
+
+networking commands:
+
+ping           : to check the internet connection
+ipaddr         :it will show the ip address
+hostname -i    :it will show the ip address
+hostname        :it will show name of the host
+pwd             :present working directory
+
+cat :to see the content of file
+cat>file :enter the content into the file
+cp file1 file2
+mv file /opt :move the file from one location to another location
+mv master main : to remae
