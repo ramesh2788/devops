@@ -1,0 +1,203 @@
+  ls
+    2  ssh-keygen
+    3  cd .ssh/
+    4  ls
+    5  cat authorized_keys
+    6  cat id_rsa
+    7  cat id_rsa.pub
+    8  git -v
+    9  yum install git -y
+   10  mkdir new
+   11  cd new/
+   12  ls
+   13  ggit init
+   14  git init
+   15  CD
+   16  cd
+   17  ssh-keygen
+   18  cd .ssh/
+   19  ls
+   20  cat id_rsa.pub
+   21  rm -rf id_rsa id_rsa.pub
+   22  ls
+   23  ssh-keygen
+   24  ls
+   25  cat id_rsa.pub
+   26  touch abc.txt
+   27  ls
+   28  git status
+   29  cd ..
+   30  cd new/
+   31  ls -a
+   32  touch abc
+   33  git add .
+   34  git commit -m "hi"
+   35  git remote add origin git@github.com:mohanlucky2/newrepo.git
+   36  git branch -m main
+   37  git push -u origin main
+   38  git clone git@github.com:mohanlucky2/newrepo.git
+   39  cd newrepo/
+   40  cd ..
+   41  ls
+   42  mv abc newrepo/
+   43  cd newrepo/
+   44  git status
+   45  git add .
+   46  git commit -m "hi"
+   47  git branch
+   48  git push -u origin main
+   49  ls
+   50  rm rf *
+   51  ls -a
+   52  touch abc
+   53  git add .
+   54  git commit -m "hi"
+   55  git remote add origin https://github.com/mohanlucky2/new.git
+   56  git remote rm origin
+   57  git remote add origin https://github.com/mohanlucky2/new.git
+   58  git branch
+   59  git push -u origin main
+   60  clear
+   61  touch dev{1..3}
+   62  ;s
+   63  ls
+   64  rm -rf *
+   65  lx
+   66  ls
+   67  mkdir gitpractice
+   68  cd gitpractice/
+   69  git init
+   70  touch file{1..5}
+   71  vi .gitignore
+   72  git status
+   73  git add .
+   74  git commit -m "hi"
+   75  git status
+   76  git branch
+   77  git branch ece
+   78  git checkout ece
+   79  touch ece{1..5}
+   80  git status
+   81  git add .
+   82  git commit -m "commit-3"
+   83  git brancg -b eee
+   84  git checkout -b eee
+   85  git branch
+   86  git status
+   87  touch eee{1..5}
+   88  git add commit -m "commit-3" *
+   89  git add .,commit -m "commit-3" *
+   90  git add .
+   91  git commit -m "master"
+   92  git config --global user.name user
+   93  git config --global user.email user@gmail
+   94  git config --global-list
+   95  git config --global --list
+   96  git log
+   97  git checkout master
+   98  git branch
+   99  git merge
+  100  ls
+  101  git merge ece
+  102  ls
+  103  git merge eee
+  104  git log
+  105  git show 94ee67db3afe
+  106  git diff --git a/file2 b/file2
+  107   diff --git a/file2 b/file2
+  108  git -v
+  109  yum remove git* -y
+  110  yum remove git -y
+  111  yum remove git* -y
+  112  git -v
+  113  yum remove git* -y
+  114  yum install git -y
+  115  ls
+  116  ll
+  117  rm -rf *
+  118  ls
+  119  mkdir ramesh
+  120  cd ramesh/
+  121  ls
+  122  ls -al
+  123  touch file
+  124  ls
+  125  git staus
+  126  git status
+  127  git init
+  128  ls
+  129  ls -a
+  130  ll -a
+  131  ls -al
+  132  git status
+  133  git add .
+  134  git status
+  135  git commit -m "commit-1" *
+  136  gitstatus
+  137  git status
+  138  git branch
+  139  git log
+  140  git config --global user.name ramesh
+  141  git config --global user.email ramesh@gmail.com
+  142  git config --global --list
+  143  ls
+  144  git branch
+  145  ls
+  146  git branch money
+  147  git branch
+  148  git checkout money
+  149  git branch
+  150  touch money{1..5}
+  151  ls
+  152  git status
+  153  git add .
+  154  git commit -m "commit-2"
+  155  git log
+  156  git branch recharge
+  157  git branch
+  158  git checkout rechrage
+  159  git checkout recharge
+  160  git branch
+  161  ls
+  162  touch recharge{1..5}
+  163  git status
+  164  git add .
+  165  git commit -m "commit-3"
+  166  ls
+  167  git checkout -b ticket
+  168  git branch
+  169  ls
+  170  touch ticket{1..5}
+  171  git status
+  172  git add .
+  173  git commit -m "commit-4"
+  174  ls
+  175  git status
+  176  git checkout master
+  177  ls
+  178  git checkout -b bill
+  179  ggit branch
+  180  git branch
+  181  ll
+  182  touch bill{1..5}
+  183  git status
+  184  git add .
+  185  git commit -m "commit-5"
+  186  ls
+  187  git checkout master
+  188  ls
+  189  git branch
+  190  git merge money
+  191  ls
+  192  git merge recharge
+  193  ls
+  194  git branch
+  195  git rebase ticket
+  196  ls
+  197  git rebase bill
+  198  ls
+  199  git remote add origin https://github.com/mohanlucky2/gitpractice.git
+  200  git branch
+  201  git branch -m main
+  202  git branch
+  203  git push -u origin main
