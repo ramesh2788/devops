@@ -78,11 +78,127 @@
   191  ls
   192  git merge recharge
   193  ls
-  194  git branch
+  194  git branch 297  cd dir
+  298  echo "# abc" >> README.md
+  299  git init
+  300  git add README.md
+  301  git commit -m "first commit"
+  302  git branch -M main
+  303  git remote add origin https://github.com/mohanlucky2/abc.git
+  304  git push -u origin main
+  305  git brnach
+  306  git banch
+  307  git branch
+  308  git remote -v
+  309  git remote rm origin
+  310  git remote -v
+  311  git branch
+  312  ls
+  313  git branch branch1
+  314  git branch
+  315  gitcheckout branch1
+  316  git checkout branch1
+  317  git branch
+  318  touch dev{1..5}
+  319  ls
+  320  git status
+  321  git add . ;git commit -m "hi"
+  322  git log
+  323  git branch
+  324  git checkout main
+  325  git branch
+  326  git merge branch1
+  327  ls
+  328  git revert branch1
+  329  ls
+  330  git log
+  331  vim file
+  332  cat file
+  333  git status
+  334  git add . ;git commit -m "commit-1"
+  335  git ls-files
+  336  git reset file
+  337  git status
+  338  git ls-files
+  339  ls
+  340  touch file2
+  341  git add .
+  342  git status
+  343  git ls-files
+  344  git rm --cached file2
+  345  git ls-files
+  346  git status
+  347  ls
+  348  cd ..
+  349  mkdir stash
+  350  cd stash
+  351  git init
+  352  vim file
+  353  git status
+  354  git add .
+  355  git status
+  356  git stash
+  357  git commit -m "commit1"
+  358  git status
+  359  git stash
+  360  touch file1
+  361  git add .
+  362  git stash
+  363  git status
+  364  git stash list
+  365  touch file2
+  366  git status
+  367  git add . ; git commit -m "comit2"
+  368  git stash pop
+  369  git status
+  370  git clone https://github.com/mohanlucky2/git.git
+  371  ls
+  372  cd git/
+  373  ll
+  374  ls -al
+  375  git pull
+  376  git branch
+  377  git status
+  378  ls
+  379  rm -rf *
+  380  ls
+  381  vim file
+  382  git status
+  383  git add .
+  384  git status
+  385  cd ..
+  386  mkdir dir2
+  387  cd dir2
+  388  git init
+  389  touch file
+  390  git add . ; git commit -m "2-commit"
+  391  git branch
+  392  vim file
+  393  git add .
+  394  git commit -m "3-commit"
+  395  git checkout -b feature
+  396  git branch
+  397  ls
+  398  vim file
+  399  git add . ; git commit -m "hi"
+  400  git checkout master
+  401  git branch
+  402  vim file
+  403  git add .
+  404  git commit -m "hi-1"
+  405  git branch
+  406  git merge feature
+  407  vim file
+  408  cat file
+  409  git status
+  410  git add .
+  411  git commit -m "commit-1"
+
   195  git rebase ticket
   196  ls
   197  git rebase bill
   198  ls
+
   199  git remote add origin https://github.com/mohanlucky2/gitpractice.git
   200  git branch
   201  git branch -m main
