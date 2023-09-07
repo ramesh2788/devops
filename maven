@@ -30,3 +30,10 @@ maven can generate the project structure
 .jar ---java archive
 .war---web archive
 .ear---enterprise archive
+
+maven set-up:
+yum install java-1.8.0-openjdk -y
+yum install maven -y
+mvn --version
+
+
