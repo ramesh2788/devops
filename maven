@@ -1,0 +1,32 @@
+maven---build tool
+
+the main purpose of maven is adding dependencies to the application
+
+maven always looks for POM.XML
+
+POM.XML:project object model.extensable markup language
+
+maven is mainly used for java projects only
+
+ant---for java projects
+gradle---for python
+ms-build---.net projects
+
+maven is developd with help of java
+the suported version for maven on amazon linux machine is 
+java-1.8.0-openjdk
+
+maven life cycle:
+----------------
+mvn compile---byte code
+mvn test------.class
+mvn package----.jar ,.war,.ear
+mvn install----put the packaged file to .M2 directory
+mvn deploy
+
+maven can generate the project structure
+ mvn archetype:generate
+
+.jar ---java archive
+.war---web archive
+.ear---enterprise archive
