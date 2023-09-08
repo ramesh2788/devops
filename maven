@@ -36,4 +36,142 @@ yum install java-1.8.0-openjdk -y
 yum install maven -y
 mvn --version
 
+apllication deployment using github ,maven,tomcat
+tomcat setup
+
+tomcat:tomcat is a webapplication server
+
+tomcat setup:
+prerequsites
+1.tomcat software
+2.java language
+configuration of tomcat
+
+1.[root@ip-172-31-49-82 apache-tomcat-9.0.80]# vim conf/tomcat-users.xml 
+
+ <role rolename="manager-gui"/>
+ <role rolename="manager-script"/>
+ <user username="tomcat" password="tomcat" roles="manager-gui,manager-script"/>
+
+2.[root@ip-172-31-49-82 apache-tomcat-9.0.80]# vim webapps/manager/META-INF/context.xml
+
+goto above path and remove 21 and 22 number lines(line which is starting with 'valve')
+
+3.start the the tomcat server
+    cd bin
+    ./startup.sh
+
+4.to get the tomcat dashboard we use
+      serverpublicip:8080
+
+if you want to deploy .warfile through tomcat to put our warfile under webapps
+HISTORY:
+ yum install java-1.8.0-openjdk maven -y
+    2  mvn --version
+    3  mvn archetype:generate
+    4  ls
+    5  cd java/
+    6  ls
+    7  cat pom.xml
+    8  yum install tree -y
+    9  tree
+   10  mvn compile
+   11  tree
+   12  mvn test
+   13  tree
+   14  mvn package
+   15  tree
+   16  git --version
+   17  yum install git -y
+   18  git clone https://github.com/mohanlucky2/jenkins-java-project.git
+   19  ls
+   20  cd jenkins-java-project/
+   21  ls
+   22  cd ..
+   23  mvn --version
+   24  mvn compile
+   25  ls
+   26  cd jenkins-java-project/
+   27  mvn compile
+   28  tree
+   29  mvn test
+   30  ls
+   31  mvn package
+   32  ls
+   33  cd target/
+   34  ls
+   35  mvn clean
+   36  cd ..
+   37  ls
+   38  mvn clean
+   39  ls
+   40  mvn package
+   41  ls
+   42  cd
+   43  pwd
+   44  wget https://dlcdn.apache.org/maven/maven-3/3.8.8/binaries/apache-maven-3.8.8-bin.tar.gz
+   45  ls
+   46  tar -xzf apache-maven-3.8.8-bin.tar.gz
+   47  ls
+   48  rm -rf apache-maven-3.8.8 apache-maven-3.8.8-bin.tar.gz java
+   49  ls
+   50  wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.80/bin/apache-tomcat-9.0.80.tar.gz
+   51  ls
+   52  tar -xzf apache-tomcat-9.0.80.tar.gz
+   53  ls
+   54  cd apache-tomcat-9.0.80/
+   55  ls
+   56  cd conf/
+   57  ls
+   58  vim tomcat-users.xml
+   59  cd ..
+   60  vim conf/tomcat-users.xml
+   61  vim webapps/manager/META-INF/context.xml
+   62  ls
+   63  cd bin/
+   64  ls
+   65  sh startup.sh
+   66  cd
+   67  ls
+   68  cd jenkins-java-project/
+   69  ls
+   70  cd target/
+   71  ls
+   72  pwd
+   73  cd
+   74  ls
+   75  mv apache-tomcat-9.0.80 /opt
+   76  ls
+   77  cd /opt
+   78  ls
+   79  cd apache-tomcat-9.0.80/
+   80  ls
+   81  cd webapps/
+   82  pwd
+   83  cd
+   84  pwd
+   85  cd jenkins-java-project/target/
+   86  ls
+   87  cp myweb-8.3.2-SNAPSHOT.war /opt/apache-tomcat-9.0.80/webapps
+   88  cd
+   89  ls
+   90  cd /opt
+   91  ls
+   92  cd apache-tomcat-9.0.80/
+   93  cd bin/
+   94  ls
+   95  ./shutdown.sh
+   96  ./startup.sh
+
+
+
+
+
+
+
+
+
+
+
+
 
