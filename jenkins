@@ -1,0 +1,14 @@
+day-1:
+
+ sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+    2   sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+    3  yum install fontconfig java-11-openjdk -y
+    4   sudo amazon-linux-extras install java-openjdk11 -y
+    5  java -version
+    6  jenkins --version
+    7  yum install jenkins -y
+    8  jenkins --version
+    9  service jenkins status
+   10  service jenkins start
+   11  service jenkins status
+   12  cat /var/lib/jenkins/secrets/initialAdminPassword
