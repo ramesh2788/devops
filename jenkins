@@ -12,3 +12,35 @@ day-1:
    10  service jenkins start
    11  service jenkins status
    12  cat /var/lib/jenkins/secrets/initialAdminPassword
+
+day-2:
+maven integration with maven
+installation setup for jenkins and maven
+vim jenkins.sh
+
+#STEP1: DOWNLOAD JENKINS REPOSITORY AND ENTER THE KEY:
+ sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+ sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+#STEP2:INSTALL JAVA OPENJDK11
+ sudo amazon-linux-extras install java-openjdk11 -y
+#STEP3:INSTALL JENKINS AND START THE JENKINS SERVICE
+  yum install jenkins -y
+  service jenkins start
+#STEP4: INSTALL JAVA-1.8.0-OPENJDK,GIT,MAVEN
+  yum install java-1.8.0-openjdk maven git -y
+#STEP5:SWITCH THE JAVA VERSION 
+ update-alternatives --config java
+
+  sh jenkins.sh
+goto browser with 
+publicip:8080
+
+then get back to terminal enter the following 
+cat /var/lib/jenkins/secrets/IntialAdminPassword
+JOB-SETUP:
+goto jenkins dashboard----->click on new item---->give the name of job--->select freestylejob--->lick on ok
+goto scm---->give the github repository---goto buildsteps---->select toplevel invoke maven targets--->clean package-->save job
+--->click on build now
+
+
+ 
