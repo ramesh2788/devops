@@ -52,5 +52,20 @@ multistring parmeter
 
 goto general section--->select this project is perameterised-->click on parameters
 
+build triggers:
+it can automate our project or job
+1. build periodically
+2.pollscm
+3.webhooks
+
+build periodically:
+ it works like alaram.if you select some particular time intervel job is build automatically
+poll scm:
+ whenever the developer change the commit in that time only job will build depend on our time setup
+webhooks:
+  whenever the developer change the commit in that time only immidietly job will build
+
+
+
 
  
