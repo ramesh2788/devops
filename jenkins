@@ -42,5 +42,15 @@ goto jenkins dashboard----->click on new item---->give the name of job--->select
 goto scm---->give the github repository---goto buildsteps---->select toplevel invoke maven targets--->clean package-->save job
 --->click on build now
 
+parameterised builds:
+5 types of parameters
+boolean parameters
+file parameter
+choice parmeter
+string parmeter
+multistring parmeter
+
+goto general section--->select this project is perameterised-->click on parameters
+
 
  
