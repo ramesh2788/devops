@@ -64,6 +64,48 @@ poll scm:
  whenever the developer change the commit in that time only job will build depend on our time setup
 webhooks:
   whenever the developer change the commit in that time only immidietly job will build
+day-3:
+build periodically
+
+crontab
+  * * * * *
+1 * indicates minute
+2 *-->indicates hour
+3 *--->indicates date
+4 *-->month
+5 *-->week of the day
+
+26-09 10.30 
+
+
+buld after other projects built
+--->it is als0 called as linked jobs,in this we have to wait for first job then only second job will trigger automatically 
+
+Trigger builds remotely (e.g., from scripts)
+we can build the job from so far from our machine or server
+
+
+http://23.22.162.236:8080/job/job2/build?token=ramesh
+
+buildsteps---->select exicute shell
+
+
+
+jenkins variables:
+1.local variables--->these are working inside the job only
+name=ram
+loc=andhra
+jobloc=hyderbad
+echo "hi my name is $name ,i am from $loc,working at $jobloc"
+
+2.global variables
+goto dash board--->manage jenkins--->system-->global properties--->environmental variables
+
+
+3.jenkins varibls
+
+
+
 
 
 
