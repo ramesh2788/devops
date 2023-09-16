@@ -81,7 +81,8 @@ crontab
 
 buld after other projects built
 --->it is als0 called as linked jobs,in this we have to wait for first job then only second job will trigger automatically 
-
+job1--->aftercompletion of job2 it will trigger the job1(here job1 is downstream)
+mannually trigger job2--->automaticall job1 will trigger--->automatically job3 will trigger
 Trigger builds remotely (e.g., from scripts)
 we can build the job from so far from our machine or server
 
@@ -105,6 +106,20 @@ goto dash board--->manage jenkins--->system-->global properties--->environmental
 
 3.jenkins varibls
 
+password less login:
+
+1.cd /var/lib/jenkins--->vim conf.xml----goto 9 line change true to false( <useSecurity>false</useSecurity>)--->svae is
+2.service jenkins restart
+
+change the portnumber:
+1.vim /usr/lib/jenkins/systemd/system/jenkins.service
+goto 67 th line
+2.change the portnumber --> save it 
+3.goto inbound rules enabkle the port number
+4.service jenkins restart
+
+pipeline:
+pipeline is step by step exicution of process
 
 
 
