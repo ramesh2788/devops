@@ -64,6 +64,7 @@ poll scm:
  whenever the developer change the commit in that time only job will build depend on our time setup
 webhooks:
   whenever the developer change the commit in that time only immidietly job will build
+goto setting inside the repository --->selectwebhooks--->add webhook---->punderpayload url (jenkinsurl/github-webhook/)--->create webhook
 day-3:
 build periodically
 
