@@ -118,6 +118,55 @@ goto 67 th line
 3.goto inbound rules enabkle the port number
 4.service jenkins restart
 
+
+installation of jenkins on ubuntu
+
+curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key | sudo tee \
+    /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+ echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
+    https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+    /etc/apt/sources.list.d/jenkins.list > /dev/null
+sudo apt-get update
+ sudo apt-get install fontconfig openjdk-11-jre
+ sudo apt-get install jenkins
+
+
+
+master slave
+master slave configuration:java-openjdk11 is mandatory for master slave configuration
+
+steps:
+
+Manage Jenkins--->nodes--->select perminant agent--->Number of executors-->3
+---->Remote root directory-->/tmp
+Labels--->slave
+usage--->only label expression matched
+Launch method--->launch via ssh agent
+Host-->private ip of slave
+credentials:click on add --->select jenkins---select username with privetekey
+  ---->id (slave)--->description(slave)--->select secretkey then add private key 
+  --->click add---->
+  
+  Host Key Verification Strategy--->nonverifying stratogy
+history of master
+sudo apt-get update -y
+    2  apt-get install jenkins -y
+    3  service  jenkins status
+    4  apt install maven -y
+    5  mvn --version
+    6  mvn archetype:generate
+    7  ls
+    8  cd java/
+    9  ls
+   10  mvn package
+   11  ls
+   12  cd target/
+history slave
+ apt update -y
+    6  apt-get install fontconfig openjdk-11-jre -y
+
+
+
 pipeline:
 pipeline is step by step exicution of process
 
