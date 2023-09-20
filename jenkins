@@ -118,6 +118,7 @@ goto 67 th line
 3.goto inbound rules enabkle the port number
 4.service jenkins restart
 
+day-4
 
 installation of jenkins on ubuntu
 
@@ -164,6 +165,78 @@ sudo apt-get update -y
 history slave
  apt update -y
     6  apt-get install fontconfig openjdk-11-jre -y
+day-5:
+jenkins users:
+step-1
+RBAC : Role based access control
+it is used to restrict the user for jenkins job.
+it provide only few permissions for only few jobs.
+we can crete jenkins users
+
+goto manage jenkins--->select users--->add user--->ram-->add another user--->
+step-2
+plugin download:
+manage jenkkins
+plugins
+available section
+rolebased autherization stratagy
+
+step-3
+manage jenkins--->security---->authrization---->role based stratagy--->save
+
+step-4:
+MANAGE AND ASSIGN USERS:
+manage roles-->add-->fresher and experience--->fresher-->overall read--->exp--->admin
+assign roles-->add user--->ram :fresher--->ganesh:exprience
+
+jenkins custamised work space:
+------------------------------
+to create our own workspce to store the job information
+
+mkdir /root/jenkinsworkspace
+
+chown jemkins:jemkins jenkinsworkspace
+
+chown jemkins:jemkins /root
+
+job configure--->general section --->select advanced section--->custom workspace--->/root/jenkinsworkspace
+
+then we an run the job and observe the workspace
+
+deployment process using master and slave:
+------------------------------------------
+step-1:
+------
+setup master and slave 
+
+install the tomcat and maven and openjdk11 on slave
+
+download the deploy to container plgin
+
+install the tomcat on slve server
+
+tomcat setup:
+--------------
+wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.80/bin/apache-tomcat-9.0.80.tar.gz
+tar -xzf apache-tomcat-9.0.80.tar.gz
+cd apache-tomcat-9.0.80
+vi apache-tomcat-9.0.80/conf/tomcatusers.xml
+
+ <role rolename="manager-gui"/>
+  <role rolename="manager-script"/>
+  <user username="tomcat" password="tomcat" roles="manager-gui,manager-script"/>
+
+add the user and password
+
+vi apache-tomcat-9.0.80/webapps/manager/META-INF/context.xml
+
+delete 21 and 22 lines
+
+
+step2:
+create freestyle job--->Restrict where this project can be run
+in general section---->select github repository--->build steps--->clean package
+--->postbuild actions-->selct war/jar files-->save
 
 
 
