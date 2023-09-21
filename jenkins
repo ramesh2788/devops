@@ -242,6 +242,10 @@ create freestyle job--->Restrict where this project can be run
 in general section---->select github repository--->build steps--->clean package
 --->postbuild actions-->selct war/jar files-->save
 
+jenkins backup:
+command for backup
+ tar -zcvf /mnt/ext_mount/jenkins.tar.gz /var/lib/jenkins
+
 
 
 pipeline:
