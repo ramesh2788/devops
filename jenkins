@@ -210,6 +210,10 @@ step-1:
 setup master and slave 
 
 install the tomcat and maven and openjdk11 on slave
+sudo apt update
+sudo apt install openjdk-8-jdk
+java -version
+sudo update-alternatives --config java
 
 download the deploy to container plgin
 
