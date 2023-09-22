@@ -247,9 +247,67 @@ command for backup
  tar -zcvf /mnt/ext_mount/jenkins.tar.gz /var/lib/jenkins
 
 
-
 pipeline:
-pipeline is step by step exicution of process
+it is a step by step exicution of process or sequential exicution of process
+
+types of pipeline
+
+1.declarative
+2.scripted pipeline
+
+jenkins pipelines are written in groovy language
+
+delarative pipeline is start with pipeline
+scripted  pipeline is start with node
+
+example for declarative pipeline
+
+single stage pipeline:
+
+pipeline{
+agent any
+stages{
+stage('createfile'){
+steps{
+sh 'touch file'
+}
+}
+}
+}
+PASSS:
+P:pipeline
+A:agentany
+s:stages
+s:stage
+s:steps
+
+pipeline {
+    agent any
+
+    stages {
+        stage('git checkout') {
+            steps {
+               git branch: 'main', url: 'https://github.com/mohanlucky2/jenkins-java-project.git'
+            }
+        }
+         stage('compile') {
+            steps {
+              sh 'mvn compile'
+            }
+        }
+        stage('test') {
+            steps {
+              sh 'mvn test'
+            }
+        }
+         stage('package') {
+            steps {
+              sh 'mvn package'
+            }
+        }
+    }
+}
+
 
 
 
