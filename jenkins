@@ -308,7 +308,25 @@ pipeline {
     }
 }
 
-
+history:
+ service jenkins status
+   35  cd /var/lib/jenkins/workspace/pipeline-1
+   36  ls
+   37  cd
+   38  mvn --version
+   39  apt install openjdk-8-jdk -y
+   40  apt update -y
+   41  apt install openjdk-8-jdk -y
+   42  apt install maven -y
+   43  sudo dpkg --configure -a
+   44  apt install openjdk-8-jdk -y
+   45  apt install maven -y
+   46  mvn --version
+   47  update-alternatives --config java
+   48  mvn --version
+   49  cd /var/lib/jenkins/workspace/mavenpipeline
+   50  ls
+   51  cd target/
 
 
 
