@@ -246,7 +246,7 @@ jenkins backup:
 command for backup
  tar -zcvf /mnt/ext_mount/jenkins.tar.gz /var/lib/jenkins
 
-
+day-6
 pipeline:
 it is a step by step exicution of process or sequential exicution of process
 
