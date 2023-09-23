@@ -328,6 +328,28 @@ history:
    50  ls
    51  cd target/
 
+jenkins variables and parametrs pipeline
+-----------------------------------------
+
+pipeline{
+    agent any
+    environment {
+      name='ram'
+      loc='hyd'
+      job='devops engineer'
+    }
+    parameters {
+        choice(name:'server',choices:['a','b','c'])
+    }
+    stages{
+        stage("one"){
+            steps{
+                echo "hai all my name is $name,i am from $loc,working as $job"
+                echo "the job name is $JOB_NAME,the build number is $BUILD_NUMBER"
+            }
+        }
+    }
+}
 
 
 
