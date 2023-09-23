@@ -1,0 +1,51 @@
+pipeline {
+    agent {
+        label 'node'
+    }
+
+    stages {
+        stage('gitcheckout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/mohanlucky2/jenkins-java-project.git'
+            }
+        }
+        stage('compile') {
+            steps {
+                sh 'mvn compile'
+            }
+        }
+        stage('build') {
+            steps {
+                sh 'mvn test'
+            }
+        }
+        stage('codereview') {
+            steps {
+                sh '''
+                   mvn sonar:sonar \
+                     -Dsonar.projectKey=project \
+                     -Dsonar.host.url=http://54.236.25.208:9000 \
+                     -Dsonar.login=c9116e77edb3ab199f5e68bdc59f0997ab542ce3
+                   '''
+            }
+        }
+         stage('package') {
+            steps {
+                sh 'mvn package'
+            }
+        }
+         stage('deploy') {
+            steps {
+                deploy adapters:[
+                    tomcat9(
+                        credentialsId: '9571ee79-8fb4-4a79-abd6-159e9aec7383',
+                        path:'',
+                        url: 'http://54.198.243.166:8080/'
+                        )
+                        ],
+                        contextPath: 'netflex',
+                        war: 'target/*.war'
+            }
+        }
+    }
+}
