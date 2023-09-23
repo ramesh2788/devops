@@ -43,7 +43,7 @@ pipeline {
                         url: 'http://54.198.243.166:8080/'
                         )
                         ],
-                        contextPath: 'netflex',
+                        contextPath: 'sonar-tomcat',
                         war: 'target/*.war'
             }
         }
