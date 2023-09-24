@@ -1,3 +1,12 @@
+pre-requasites:
+1.launch three instances
+  one instance for jenkins
+  one instance for tomcat
+  one instance for sonarqube(t2.medium)
+2.we have to configure master slave cinfiguration(master-jenkins,slave-tomcat)
+3.to deploy war file through tomcat we have to install  "deploy to container" plugin in jenkins
+   manage jenkins--->plugins--->available plugins--->deploy to container--->install without restart
+
 pipeline {
     agent {
         label 'node'
