@@ -351,7 +351,53 @@ pipeline{
     }
 }
 
+pipeline as a code:
+pipeline {
+    agent{
+        label 'node'
+    }
 
+    stages {
+        stage('one') {
+            steps {
+                git branch: 'main', url: 'https://github.com/mohanlucky2/jenkins-java-project.git'
+                sh '''
+                mvn compile
+                mvn test
+                mvn package
+                '''
+            }
+        }
+        stage('two'){
+            steps{
+                deploy adapters:[
+                    tomcat9(
+                        credentialsId:'d30b6312-e810-4b17-940f-6de13a8bb429',
+                        path:'',
+                        url:'http://3.91.74.126:8080/'
+                        )
+                        ],
+                        contextPath: 'tomcat-deploy',
+                        war: 'target/*.war'
+            }
+        }
+    }
+}
 
+type-2
+pipeline {
+    agent{
+        label 'node'
+    }
+
+    stages {
+        stage('one') {
+            steps {
+                git branch: 'main', url: 'https://github.com/mohanlucky2/jenkins-java-project.git'
+                sh 'mvn compile'
+                sh 'mvn test'
+                sh 'mvn package'
+            }
+        }
 
  
