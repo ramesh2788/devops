@@ -1,0 +1,53 @@
+ yum update -y
+    2  cd .ssh/
+    3  ls
+    4  ssh-keygen
+    5  ls
+    6  cat id_rsa.pub
+    7  ssh 172.31.94.235
+    8  ssh 172.31.82.35
+    9  yum install ansible -y
+   10  sudo amazon-linux-extras install ansible2 -y
+   11  cd
+   12  vim /etc/ansible/hosts
+   13  ansible all -m ping
+   14  history
+ansible setup
+--------------
+three servers
+
+ansible set up
+
+cd .ssh
+ansible is used ssh configuration
+
+so by using ssh configuration ansible master will communicate with slaves
+ssh configuration steps:
+step-1:
+in master only master:
+cd .ssh
+ssh-keygen
+press 'enter' button 4 times,then it will generate id_rsa and idrsa.pub files
+cat id_rsa.pub
+copy the content
+step-2:
+goto slave
+cd .ssh
+nano autherised_keys  
+then remove the content up to ssh then add the content which is copied from master.
+step-3:
+------
+hostname -i it will display private ip
+then goto master give this like following
+ssh private key of slave
+
+ansible configuration:
+----------------------
+sudo amazon-linux-extras install ansible2 -y
+
+vim /etc/ansible/hosts
+
+here we have to enter the private ip addresses of slave machines
+
+ansible all -m ping--->this is used for to verify the ansible configuration
+
