@@ -1,4 +1,5 @@
- ansible setup
+day-1
+ansible setup
 --------------
 three servers
 
@@ -57,3 +58,102 @@ yum update -y
    11  cd
    12  vim /etc/ansible/hosts
    13  ansible all -m ping
+day:-2
+------
+ansible all -m ping
+adhoc commands: 
+these all are linux commands for using tempory perpose
+ansible all -a "ls"
+ansible all -a "lsblk"
+ansible all -a "yum install httpd -y"
+ansible all -a "service httpd start"
+ansible all -a "service httpd status"
+ansible all -a "yum install git -y"
+ansible all -a "yum install tree -y"
+ansible all -a "useradd ramu"
+ansible all -a "cat /etc/ansible"
+ansible all -a "touch abc.txt"
+ansible all -a "mkdir devops"
+
+modules:
+these are key-value pairs,we can reuse modules
+
+ansible all -m yum -a "name=httpd state=present"(install)
+ansible all -m service -a "name=httpd state=started"(start)
+ansible all -m service -a "name=httpd state=stopped"
+ansible all -m yum -a "name=git state=present"
+ansible all -m yum -a "name=maven state=latest"
+ansible all -m yum -a "name=httpd state=absent"(uninstall)
+ansible all -m copy -a "src=abc.txt dest=/root"
+ansible all -m user -a "name=ramu state=present"
+
+here we can use single module at a time
+
+history:
+ ansible all -m ping
+   24  ansible all -a "ls"
+   25  ansible all -a "pwd"
+   26  ansible all -a "touch abc.txt"
+   27  ansible all -a "ls"
+   28  ansible all -a "mkdir dir1"
+   29  ansible all -a "ls"
+   30  ansible all -a "git --version"
+   31  ansible all -a "yum install git -y"
+   32  ansible all -a "git --version"
+   33  ansible all -a "yum remove git -y"
+   34  ansible all -a "yum remove git* -y"
+   35  yum install httpd -y
+   36  service httpd start
+   37  service httpd status
+   38  cd /var/www/html/
+   39  vim index.html
+   40  service httpd restart
+   41  cd
+   42  vim index.html
+   43  ls
+   44  ansible all -a "yum install httpd -y"
+   45  ansible all -a "service httpd start"
+   46  ansible all -a "service httpd status"
+   47  ansible all -m copy -a "src=index.html dest=/var/www/html"
+   48  ansible all -a "rm -f /var/www/html/index.html" 
+   49  ansible all -a "ls /var/www/html/" 
+   50  ansible all -m copy -a "src=index.html dest=/var/www/html"
+   51  ansible all -a "yum remove httpd* -y"
+   52  ansible all -a "service httpd status"
+   53  ansible all -a "useradd ramesh"
+   54  ansible all -a "cat /etc/passwd"
+   55  ansible dev -a "yum install tree -y"
+   56  ansible all -a "trre --version"
+   57  ansible all -a "tree --version"
+   58  vim /etc/ansible/hosts 
+   59  ansible all -m yum -a "name=git state=present"
+   60  ansible all -m yum -a "name=git* state=absent"
+   61  ansible all -a "git --version"
+   62  ansible all -m yum -a "name=httpd state=present"
+   63  ansible all -m service -a "name=httpd state=started"
+   64  ls
+   65  ansible all -m copy -a "src=index.html dest=/var/www/html"
+   66  ansible all -m service -a "name=httpd state=stopped"
+   67  ansible all -m yum -a "name=httpd state=absent"
+   68  ansible all -a "tree --version"
+   69  ansible dev -a "yum remove tree -y"
+   70  ansible all -a "tree --version"
+   71  ansible all -m yum -a "name=tree state=latest"
+   72  ansible all -m user -a "name=kranthi state=present"
+   73  ansible all -a "cat /etc/passwd"
+   74  ansible all -a "df -h"
+   75  df -h
+   76  vim /etc/ansible/hosts 
+   77  ansible test -a "useradd ramu"
+   78  ansible dev -m user -a "name=ramu state=present"
+   79  ansible all -a "cat /etc/passwd"
+   80  hostname master
+   81  bash
+
+
+
+
+
+
+
+
