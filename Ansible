@@ -25,6 +25,7 @@ step-3:
 ------
 hostname -i it will display private ip
 then goto master give this like following
+
 ssh private key of slave
 
 ansible configuration:
@@ -34,7 +35,12 @@ sudo amazon-linux-extras install ansible2 -y
 vim /etc/ansible/hosts
 
 here we have to enter the private ip addresses of slave machines
-
+[dev]
+private ip1
+private ip2
+[test]
+private ip3
+private ip4
 ansible all -m ping--->this is used for to verify the ansible configuration
 
 history:
