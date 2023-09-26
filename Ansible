@@ -1,18 +1,4 @@
- yum update -y
-    2  cd .ssh/
-    3  ls
-    4  ssh-keygen
-    5  ls
-    6  cat id_rsa.pub
-    7  ssh 172.31.94.235
-    8  ssh 172.31.82.35
-    9  yum install ansible -y
-   10  sudo amazon-linux-extras install ansible2 -y
-   11  cd
-   12  vim /etc/ansible/hosts
-   13  ansible all -m ping
-   14  history
-ansible setup
+ ansible setup
 --------------
 three servers
 
@@ -51,3 +37,17 @@ here we have to enter the private ip addresses of slave machines
 
 ansible all -m ping--->this is used for to verify the ansible configuration
 
+history:
+yum update -y
+    2  cd .ssh/
+    3  ls
+    4  ssh-keygen
+    5  ls
+    6  cat id_rsa.pub
+    7  ssh 172.31.94.235
+    8  ssh 172.31.82.35
+    9  yum install ansible -y
+   10  sudo amazon-linux-extras install ansible2 -y
+   11  cd
+   12  vim /etc/ansible/hosts
+   13  ansible all -m ping
