@@ -214,6 +214,121 @@ history:
    80  hostname master
    81  bash
 
+day:3
+playbook is used for managing more than one package ,by using more tan one module we can manage the packages
+packages are nothing but git ,maven,docker, tree ...
+
+example for single module play book
+ansible playbooks are run written in YAML formate
+
+YAML:yet markup another language
+
+yaml formate is very easy and human readable
+
+ansible all -a "yum install git -y"
+
+ansible all -m yum -a "name=git state=present"
+
+single module playbook
+
+---
+- name: install package
+  hosts: all
+  tasks:
+  - name: install git
+    yum: name=git state=present
+
+multiple module playbook
+
+---
+- name: install package
+  hosts: all
+  tasks:
+  - name: install git
+    yum: name=git state=present
+  - name: install tree
+    yum: name=tree state=present
+  - name: instal maven
+    yum: name=maven state=present 
+
+tages:to install or skipping the some of modules
+
+---
+- name: install package
+  hosts: all
+  tasks:
+  - name: install git
+    yum: name=git state=present
+    tags: a
+  - name: install tree
+    yum: name=tree state=present
+    tags: b
+  - name: instal maven
+    yum: name=maven state=present 
+    tags: c
+  - name: installing docker
+    yum: name=docker state=present
+    tags: d
+  - name:install httpd
+    action: yum name=httpd state=present
+    tags: e
+
+variables:
+----------
+two types of variables are there ,they are
+1.static variables
+2.dynamic variables
+
+static varibles:these are present inside the playbook
+
+---
+- name: install package
+  hosts: all
+  vars:
+    a: git
+    b: docker
+    c: tree
+  tasks:
+  - name: install git
+    yum: name={{a}} state=present
+  - name: install tree
+    yum: name={{b}} state=present
+  - name: instal maven
+    yum: name={{c}} state=present
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
