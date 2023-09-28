@@ -295,6 +295,85 @@ static varibles:these are present inside the playbook
     yum: name={{b}} state=present
   - name: instal maven
     yum: name={{c}} state=present
+dynamic variables:
+------------------
+vim playbook1.yml
+- hosts: all
+  become: true
+  tasks:
+    - yum: name={{a}} state=present
+    - yum: name={{b}} state=present
+
+ansible-playbook playbook1.yml --extra-vars "a=git b=maven"
+
+loops:
+loops used to install multiple packages install at a time
+vim loops.yml
+- hosts: all
+  tasks:
+    - yum: name={{item}} state=present
+      with_items:
+        - git
+        - docker
+        - maven
+        - java-1.8.0-openjdk
+        - httpd
+
+
+ansible-playbook loops.yml
+
+uninstallation:
+vim loops.yml
+- hosts: all
+  tasks:
+    - yum: name={{item}} state=absent
+      with_items:
+        - git*
+        - docker*
+        - maven* 
+        - java-1.8.0-openjdk*
+        - httpd*
+
+ansible-playbook loops.yml
+notify and handlers:
+
+vim handlers.yml
+
+- hosts: all
+  tasks:
+    - name: install httpd
+      yum: name=httpd state=present
+      notify: start httpd
+  handlers:
+    - name: start httpd
+      service: name=httpd state=started
+
+ansible-playbook handlers.yml
+
+roles:
+we can split our playbook into parts to reuse the the tasks
+
+mkdir -p roles/one/tasks
+
+vim roles/one/tasks/main.yml
+- name: install httpd
+  yum: name=httpd state=present
+
+mkdir -p roles/two/tasks
+
+vim roles/two/tasks/main.yml
+- name: install docker
+  yum: name=docker state=present
+
+vim master.yml
+
+- hosts: all
+  roles:
+    - one
+    - two
+
+ansiblep-playbook master.yml
+
 
 
 
