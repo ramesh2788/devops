@@ -373,6 +373,8 @@ vim master.yml
     - two
 
 ansiblep-playbook master.yml
+==========================================================================================
+condtions:
 
 vim osflavour.yml 
 
