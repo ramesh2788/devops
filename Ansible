@@ -386,8 +386,17 @@ vim osflavour.yml
       when: ansible_os_family == "Debian"   
 
 ansible-playbook osflavour.yml
+============================================================================================================
 
 ansible-vault:
+
+ansible-vault create playbook.yml:it will ask password
+ansible-vault edit playbook.yml:we modify the content inside the file
+ansible-vault view playbook.yml:it can show the content
+ansible-vault rekey playbook.yml:we can change the password
+ansible-vault encrypt playbook.yml:it can provide the security to existing file
+ansible-vault decrypt playbook.yml:it can decript the file
+
      ansible-vault helps to maintain security while allowing you to store important credentials and configuration 
 data within your Ansible playbooks and roles.
 ansible-vault create play.yml
