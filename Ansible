@@ -374,6 +374,121 @@ vim master.yml
 
 ansiblep-playbook master.yml
 
+vim osflavour.yml 
+
+- hosts: all
+  tasks:
+    - name: installing git on RedHat
+      yum: name=git state=present
+      when: ansible_os_family == "RedHat"
+    - name: installing git on Debian
+      apt: name=git state=present
+      when: ansible_os_family == "Debian"   
+
+ansible-playbook osflavour.yml
+
+ansible-vault:
+     ansible-vault helps to maintain security while allowing you to store important credentials and configuration 
+data within your Ansible playbooks and roles.
+ansible-vault create play.yml
+New Vault password:
+Confirm New Vault password:
+
+ansible-vault edit play.yml
+ansible-vault rekey play.yml
+Vault password:
+New Vault password:
+Confirm New Vault password:
+
+ansible-vault encrypt playbook1.yml
+New Vault password:
+Confirm New Vault password:
+
+ansible-vault decrypt playbook1.yml
+passwd:
+
+ansible-vault view play.yml
+vault password:
+==========================================================================================================================
+webpage deploy using httpd:
+---------------------------
+vim index.html
+<!DOCTYPE html>   
+<html>   
+<head>  
+<meta name="viewport" content="width=device-width, initial-scale=1">  
+<title> Login Page </title>  
+<style>   
+Body {  
+  font-family: Calibri, Helvetica, sans-serif;  
+  background-color: pink;  
+}  
+button {   
+       background-color: #4CAF50;   
+       width: 100%;  
+        color: orange;   
+        padding: 15px;   
+        margin: 10px 0px;   
+        border: none;   
+        cursor: pointer;   
+         }   
+ form {   
+        border: 3px solid #f1f1f1;   
+    }   
+ input[type=text], input[type=password] {   
+        width: 100%;   
+        margin: 8px 0;  
+        padding: 12px 20px;   
+        display: inline-block;   
+        border: 2px solid green;   
+        box-sizing: border-box;   
+    }  
+ button:hover {   
+        opacity: 0.7;   
+    }   
+  .cancelbtn {   
+        width: auto;   
+        padding: 10px 18px;  
+        margin: 10px 5px;  
+    }   
+        
+     
+ .container {   
+        padding: 25px;   
+        background-color: lightblue;  
+    }   
+</style>   
+</head>    
+<body>    
+    <center> <h1> Student Login Form </h1> </center>   
+    <form>  
+        <div class="container">   
+            <label>Username : </label>   
+            <input type="text" placeholder="Enter Username" name="username" required>  
+            <label>Password : </label>   
+            <input type="password" placeholder="Enter Password" name="password" required>  
+            <button type="submit">Login</button>   
+            <input type="checkbox" checked="checked"> Remember me   
+            <button type="button" class="cancelbtn"> Cancel</button>   
+            Forgot <a href="#"> password? </a>   
+        </div>   
+    </form>     
+</body>     
+</html>  
+======================================================================================================================
+vim httpddeploy.yml
+
+- hosts: all
+  tasks:
+    - name: installing httpd
+      yum: name=httpd state=present
+    - name: start httpd
+      service: name=httpd state=started
+    - name: copy the index.html to httpd path
+      copy: src=index.html dest=/var/www/html
+ansible-playbook httpddeploy.yml
+
+
 
 
 
