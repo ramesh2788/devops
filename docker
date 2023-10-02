@@ -8,6 +8,7 @@ monolithic service: N no.of services utilize single server and single data base
  microservice: N no.of services working on N no.of servers.i.e each and every service has individul server along with database
 
 hypervier :it can introduce the virtulization on physical system
+
 installation of docker:
 
 yum install docker -y
