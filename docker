@@ -8,10 +8,13 @@ monolithic service: N no.of services utilize single server and single data base
  microservice: N no.of services working on N no.of servers.i.e each and every service has individul server along with database
 
 hypervier :it can introduce the virtulization on physical system
+installation of docker:
 
-   installation of docker
-    yum install docker -y
+yum install docker -y
 service docker start
-   service docker status
-   if you want to create a container it requires image.
+service docker status
+if you want to create a container it requires image.
+Docker Containers:
+Docker containers are the lightweight alternatives of the virtual machine. It allows developers to package up the
+application with all its libraries and dependencies, and ship it as a single package. 
    
