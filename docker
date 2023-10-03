@@ -18,4 +18,168 @@ if you want to create a container it requires image.
 Docker Containers:
 Docker containers are the lightweight alternatives of the virtual machine. It allows developers to package up the
 application with all its libraries and dependencies, and ship it as a single package. 
+
+basic docker coomands:
+======================
+docker pull ubuntu:  dowload the docker image
+
+crate container: 
+
+#docker run -it --name cont1 ubuntu
+
+this command can create the docker container at the same time go inside the docker container
+
+ctrl p q--->comeout side from the container with out exited mode
+
+ctrl + d--->comeout side from the container and contaner goes to exited mode
+
+#docker run -itd --name cont2 ubuntu 
+ this command is used create the container and the container is run in detached mode
+
+#docker images    --->this command will show the list of containers
+#docker ps        --->to see the list of running contaners
+#docker ps -a     ---->to see the list of running and stopped containers
+#docker attach contanerid --->login to the container
+#docker exec -it contanerid /bin/bash--->login to the container
+#docker run -it --name cont -p 80:80 ubuntu --->create the containerand assign the port numner
+#docker stop cont_name
+#docker start cont_name
+#docker kill cont_name
+#docker pause con_name
+#docker container ls
+#docker inspect cont_name-->this will show the detailed discription of container
+
+docker is a os level vituvalization
+
+docker pull ubuntu
+
+docker run -itd --name cont ubuntu
+
+apt update -y
+apt install apache2 -y
+apt install mysql-server -y
+apt install default-jdk default-jre -y
+touch file{1..5}
+
+dockerfile components:
+ dockerfile has list of commands to create the docker image
+COMPONENTS:
+
+FROM		: used to base image
+RUN		    : used to run linux commands (image creation)
+CMD		    : used to run linux commands (container creation)
+ENTRYPOINT	: high priority than cmd
+COPY		: to copy local files to conatiner
+ADD		    : to copy internet files to conatiner
+WORKDIR		: to open req directory
+LABEL		: to add labels for docker file
+ENV		    : to set env variables (inside container)
+ARGS		: to pass env variables (outside containers)
+EXPOSE		: to give port number
+
+
+build the docker file------>docker image--->run the docker image---->docker contaner
+
+vim Dockerfile
+
+FROM amazonlinux
+RUN yum update -y
+RUN yum install httpd -y
+RUN touch abc.txt
+RUN mkdir ram
+WORKDIR ram
+
+docker build -t image1 .
+docker run -it --name cont1 image1
+ctrl p q
+docker ps -a
+
+vim Dockerfile
+FROM ubuntu
+RUN apt update -y
+RUN apt install apache2 -y
+COPY index.html /var/www/html
+ADD http://dlcdn.apache.org/tomcat/tomcat-9/v9.0.80/bin/apache-tomcat-9.0.80.tar.gz /tmp
+
+docker build -t image2 .
+docker run -itd --name cont2 image2
+
+ex:3
+FROM ubuntu
+RUN apt update -y
+RUN apt install apache2 -y
+COPY index.html /var/www/html
+ADD http://dlcdn.apache.org/tomcat/tomcat-9/v9.0.80/bin/apache-tomcat-9.0.80.tar.gz /tmp
+WORKDIR /tmp
+LABEL auther ram
+CMD apt install maven -y
+
+ex:4
+FROM ubuntu
+RUN apt update -y
+RUN apt install apache2 -y
+RUN apt install mysql-server -y
+RUN apt install default-jre default-jdk -y
+CMD apt install maven -y
+
+ex:5
+FROM ubuntu
+RUN apt update -y
+RUN apt install apache2 -y
+ADD http://dlcdn.apache.org/tomcat/tomcat-9/v9.0.80/bin/apache-tomcat-9.0.80.tar.gz /tmp
+WORKDIR /tmp
+VOLUME /myvol
+LABEL auther ram
+COPY index.html /var/www/html
+ENV client swiggy
+ENV container appcontainer
+EXPOSE 8080
+
+ex:6
+
+FROM ubuntu
+RUN apt update -y
+RUN apt install apache2 -y
+COPY * /var/www/html/
+CMD ["/usr/sbin/apachectl","-D","FOREGROUND"]
+
+git clone https://github.com/mohanlucky2/bookmyshow.git
+
+mv bookmyshow/* .
+
+history:
+ mkdir docker1
+ cd docker1
+ ls
+ vim Dockerfile
+ docker build -t image1 .
+ docker images
+ docker run -it --name image1
+ docker run -it --name cont3 image1
+ docker ps
+ vim Dockerfile
+ docker run -it --name image1
+ docker build -t image1 .
+ vim Dockerfile
+ docker build -t image1 .
+ vim Dockerfiles
+ cd ..
+ ls
+ cp index.html docker1/
+ cd docker1
+  ls
+ docker build -t image1 .
+ docker images
+ cat Dockerfile
+ docker run -it --name cont5 image1
+  vim Dockerfile
+ docker rm -f $(docker ps -aq)
+ docker rmi -f $(docker images -aq)
+ docker images
+ docker ps -a
+ docker build -t apache .
+ docker images
+ docker run -itd --name loginform -p 80:80 apache
+ docker ps
+
    
