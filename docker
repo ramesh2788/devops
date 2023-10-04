@@ -182,4 +182,149 @@ history:
  docker run -itd --name loginform -p 80:80 apache
  docker ps
 
+ex:6
+
+FROM ubuntu
+RUN apt update -y
+RUN apt install apache2 -y
+COPY * /var/www/html/
+CMD ["/usr/sbin/apachectl","-D","FOREGROUND"]
+
+git clone https://github.com/mohanlucky2/bookmyshow.git
+
+mv bookmyshow/* .
+
+docker volumes:
+--------------
+docker volumes are used store data inside the container
+
+docker volume is a simple directory inside the container
+
+containers uses host resources like cpu,ram and rom
+
+single volume can be shared to multiple containers 
+
+reation of the container is different ways
+method-1:
+
+FROM ubuntu
+VOLUME /myvol
+
+docker build -t image1 .
+
+docker run -it --name cont1 image1
+
+cd myvol/
+touch abc.txt
+
+cat>abc.txt
+ctrl p q
+
+docker run -it --name cont2 --volumes-from cont1 --privileged=true ubuntu
+
+method-2:
+
+docker run -it --name cont3 -v myvol1 ubuntu
+
+cd myvol1/
+
+touch file{1..5}
+
+docker run -it --name cont4 --volumes-from cont3 --privileged=true ubuntu
+
+method-3:volume mounting:
+
+docker volume ls ---->list of volumes
+
+docker volume create volume-1 --->to create volume
+docker volume inspectvolume name-->to get the docker volume information
+
+cd /var/lib/docker/volumes/myvol1/_data
+
+touch file{1..5}
+docker run -it --name cont5 --mount source=volume-1,destination=/volume-1 ubuntu
+docker volume rm volumename
+docker volume prune volumename: to delete unused containers
+
+docker system commands:
+thes are used to konow the complete information of docker container
+
+docker system df -v
+docker inspect cont3 grep volume -image
+docker system prune:to remove unused objects of docker
+
+docker memory management:
+
+containes uses host resources .by default we don't have any limits for containers
+
+we need to set it
+
+docker run -itd --name cont6 --memory="200mb" --cpus="0.2" ubuntu
+
+docker inspect cont6
+
+docker stats cont6
+
+
+
+
+
+
+
+1  yum update -y
+    2  yum install docker git -y
+    3  git clone https://github.com/mohanlucky2/bookmyshow.git
+    4  ls
+    5  cd bookmyshow/
+    6  ls
+    7  vim Dockerfile
+    8  ls
+    9  docker build -t bookmyshow .
+   10  service docker start
+   11  service docker sttus
+   12  service docker status
+   13  docker build -t bookmyshow .
+   14  docker images
+   15  docker run -itd --name cont1 -p 81:80 bookmyshow
+   16  docker ps
+   17  cd ..
+   18  mkdir docker
+   19  cd docker/
+   20  vim Dockerfile
+   21  docker build -t volumeimage .
+   22  docker images
+   23  docker run -it --name cont2 volumeimage
+   24  docker ps
+   25  docker run -it --name cont3 --volumes-from cont2 --privileged=true volumeimage
+   26  docker images
+   27  docker run -it --name cont4 -v myvolume ubuntu
+   28  docker run -it --name cont5 --volumes-from cont4 --privileged=true volumeimage
+   29  docker volume ls
+   30  docker ps -a
+   31  docker volume create myvol
+   32  docker volume ls
+   33  docker run -it --name cont6 --mount source=myvol destination=/myvol ubuntu
+   34  docker run -it --name cont6 --mount source=myvol,destination=/myvol ubuntu
+   35  docker volume ls
+   36  docker ps -a
+   37  docker system df -v
+   38  docker inspect cont1
+   39  docker inspect volume1
+   40  docker inspect myvol
+   41  docker volume ls
+   42  docker run -itd --name cont7 --memory="200mb" --cpus= "0.2" ubuntu
+   43  docker run -itd --name cont7 --memory="200mb" --cpus="0.2" ubuntu
+   44  docker stats cont7
+   45  docker images
+   46  docker ps
+   47  docker volume ls
+   48  docker rm -f $(docker ps -aq)
+   49  docker rmi -f $(docker images -aq)
+   50  docker images
+   51  docker ps -a
+   52  docker volume ls
+   53  docker volume rm myvol
+   54  docker volume prune
+   55  docker volume ls
+
    
