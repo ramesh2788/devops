@@ -326,5 +326,132 @@ docker stats cont6
    53  docker volume rm myvol
    54  docker volume prune
    55  docker volume ls
+docker compose:
+it is a tool which is used to manage multi-container aplications
+docker compose is tool to create multiple containers at single time.
+we need to write a docker-compose for this operation,
+the docker-compose file is in yaml formate
+in this file we have to mention images,ports,volumes
+
+installation of docker compose:
+yum install docker -y
+service docker start
+yum install docker-compose -y
+sudo curl -L "https://github.com/docker/compose/releases/download/1.29.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+ls /usr/local/bin/
+sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+docker-compose version
+
+vim Dockerfile
+FROM ubuntu
+RUN apt update -y
+RUN apt install apache2 -y
+COPY index.html /var/www/html/
+CMD ["/usr/sbin/apachectl","-D","FOREGROUND"]
+
+git clone https://github.com/mohanlucky2/index.html.git
+cd index.html
+mv index.html /root
+
+docker build -t registr:v1 .
+docker build -t recharge:v1 .
+docker build -t dth:v1 .
+docker build -t train:v1 .
+
+
+vim docker-compose.yml
+
+version: '3'
+services:
+  register:
+    image: register:v1
+    ports:
+      - "81:80"
+  recharge:
+    image: recharge:v1
+    ports:
+      - "82:80"
+  dth:
+    image: dth:v1
+    ports:
+      - "83:80"
+  train:
+    image: train:v1
+    ports:
+      - "84:80"
+docker-compose up -d---->to create and start containers
+docker-compose down--->to stop and delete 
+docker-compose stop--->to stop the containers
+docker-compose kill--->to kill the containers
+docker-compose start---> to start the containers
+docker-compose pause--->to pause the containers
+docker-compose unpause--->to unpause the containers
+docker-compose ps--->to show the containers created with compose file
+docker-compose logs--->to show compose logs
+docker-compose image--->to show images used for compose
+
+docker-compose file supported names:
+docker-compose.yml, docker-compose.yaml, compose.yml, compose.yaml
+advantages:
+
+we can create multiplecontainers at a time,reduce the mannual work
+we can reuse the docker-compose file
+
+
+
+
+
+vim docker.sh
+    2  sh docker.sh
+    3  service docker status
+    4  yum install docker -y
+    5  service docker start
+    6  docker-compose --version
+    7  yum install git -y
+    8  ls
+    9  git clone https://github.com/mohanlucky2/index.html.git
+   10  ls
+   11  mv index.html/ index
+   12  cd index/
+   13  ls
+   14  rm index.html.txt
+   15  ls
+   16  vim Dockerfile
+   17  cat index.html
+   18  vim index.html
+   19  docker build -t train:v1 .
+   20  docker images
+   21  vim index.html
+   22  docker build -t movie:v1 .
+   23  docker images
+   24  vim index.html
+   25  docker build -t dth:v1 .
+   26  docker images
+   27  vim index.html
+   28  docker build -t recharge:v1 .
+   29  docker images
+   30  docker ps -a
+   31  docker images
+   32  vim docker-compose.yml
+   33  docker-compose up -d
+   34  docker-compose ps
+   35  docker ps
+   36  docker-compose image
+   37  docker-compose images
+   38  docker images
+   39  docker login
+   40  docker tag train:v1 ramu478/train:v1
+   41  docker push ramu478/train:v1
+   42  docker tag movie:v1 ramu478/movie:v1
+   43  docker push ramu478/movie:v1
+   44  docker tag dth:v1 ramu478/dth:v1
+   45  docker push ramu478/dth:v1
+   46  docker tag recharge:v1 ramu478/recharge:v1
+   47  docker push ramu478/recharge:v1
+   48  docker images
+   49  docker pull ramu478/recharge
+   50  docker pull ramu478/recharge:latest
+   51  docker images
 
    
