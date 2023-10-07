@@ -454,4 +454,99 @@ vim docker.sh
    50  docker pull ramu478/recharge:latest
    51  docker images
 
+docker swarm:
+prerequasites
+3 servers(1-master,2-workers),give all traffic enable
+stop-1:
+on master
+hostname master
+bash
+on worker1
+hostname worker1
+bash
+on worker2
+hostname worker2
+bash
+step-2:
+on all nodes
+yum install docker -y
+service docker start
+
+on master only
+docker swarm init
+
+copy the token and enter it in slaves
+goto master and enter the following command
+docker node ls
+
+services:
+to copy the container from master to worker node we need to create service
+service is a way of exposing application
+
+we can manage multiple containers with the help of services
+
+docker service create --name train --replicas 6 -p 81:80 ramu478/train:v1
+docker service ls
+docker service scale train=10
+docker service ps train 
+docker service scale train=4
+docker service inspect train
+docker service rollback train
+docker service logs train
+
+to detatch node from cluster:
+--------------------------------
+docker swarm leave
+to remove node completely:
+--------------------------
+docker node rm nodeid--->on master
+
+to retrive the join token:
+--------------------------
+docker swarm join-token manage
+
+1  yum update -y
+    2  yum install docker -y
+    3  service docker start
+    4  docker swarm init
+    5  docker node ls
+    6  yum install git -y
+    7  git clone https://github.com/mohanlucky2/index.html.git
+    8  cd index.html/
+    9  ls
+   10  vim Dockerfile
+   11  docker build -t apache .
+   12  docker images
+   13  docker run -itd --name c1 -p 81:80 apache
+   14  docker ps
+   15  docker images
+   16  docker ps -a
+   17  docker node ls
+   18  docker service create --name registerform --replicas 3 apache
+   19  docker service ls
+   20  docker ps
+   21  docker service ls
+   22  docker service rm registerform
+   23  docker service ls
+   24  docker service create --name registerform --replicas 3 -p 82:80 apache
+   25  docker service ls
+   26  docker ps
+   27  docker service scale registerform=10
+   28  docker service ls
+   29  docker ps
+   30  docker service rollback registerform
+   31  docker service ls
+   32  docker ps
+   33  docker service ps registerform
+   34  docker ps
+   35  docker service ps registerform
+   36  docker service inspect registerform
+   37  docker service logs registerform
+   38  docker node ;ls
+   39  docker node ls
+   40  docker node rm bckaga3snsa25jwu9bmk2mfze
+   41  docker node ls
+   42  docker images
+
+
    
