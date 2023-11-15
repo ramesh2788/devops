@@ -1,0 +1,119 @@
+https://devopscube.com/how-to-install-latest-sonatype-nexus-3-on-linux/
+
+sudo yum update -y
+sudo yum install wget -y
+sudo yum install java-1.8.0-openjdk.x86_64 -y
+sudo mkdir /app && cd /app
+sudo wget -O nexus.tar.gz https://download.sonatype.com/nexus/3/latest-unix.tar.gz
+sudo tar -xvf nexus.tar.gz
+sudo mv nexus-3* nexus
+sudo adduser nexus
+sudo chown -R nexus:nexus /app/nexus
+sudo chown -R nexus:nexus /app/sonatype-work
+
+sudo vi  /app/nexus/bin/nexus.rc
+
+Uncomment run_as_user parameter and set it as following.
+
+run_as_user="nexus"
+
+step 7: If you want to change the default nexus data directory, open the nexus properties file and change the data directory
+ -Dkaraf.data parameter to a preferred location as shown below. If you don’t specify anything, by default nexus data directory 
+ will be set to /app/sonatype-work/nexus3
+ 
+ sudo vi /app/nexus/bin/nexus.vmoptions
+ 
+ An example configuration is shown below.
+ 
+ -Xms2703m
+-Xmx2703m
+-XX:MaxDirectMemorySize=2703m
+-XX:+UnlockDiagnosticVMOptions
+-XX:+UnsyncloadClass
+-XX:+LogVMOutput
+-XX:LogFile=../sonatype-work/nexus3/log/jvm.log
+-XX:-OmitStackTraceInFastThrow
+-Djava.net.preferIPv4Stack=true
+-Dkaraf.home=.
+-Dkaraf.base=.
+-Dkaraf.etc=etc/karaf
+-Djava.util.logging.config.file=etc/karaf/java.util.logging.properties
+-Dkaraf.data=/nexus/nexus-data
+-Djava.io.tmpdir=../sonatype-work/nexus3/tmp
+-Dkaraf.startLocalConsole=false
+
+Running Nexus as a System Service
+
+Create a nexus systemd unit file.
+
+sudo vi /etc/systemd/system/nexus.service
+
+Add the following contents to the unit file.
+
+[Unit]
+Description=nexus service
+After=network.target
+
+[Service]
+Type=forking
+LimitNOFILE=65536
+User=nexus
+Group=nexus
+ExecStart=/app/nexus/bin/nexus start
+ExecStop=/app/nexus/bin/nexus stop
+User=nexus
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
+
+---------------------------------------
+
+Now we have all the configurations in place to run nexus.
+
+Execute the following command to add nexus service to boot.
+
+sudo chkconfig nexus on
+
+To start the Nexus service, use the following command. If you are having trouble starting nexus, please check the troubleshooting section below.
+
+sudo systemctl start nexus
+
+The above command will start the nexus service on port 8081. To access the nexus dashboard, visit http://:8081. You will be able to see 
+the nexus homepage as shown below.
+
+history:
+------- 1  sudo yum update -y
+    2  sudo yum install wget -y
+    3  sudo yum install java-1.8.0-openjdk.x86_64 -y
+    4  sudo mkdir /app && cd /app
+    5  sudo wget -O nexus.tar.gz https://download.sonatype.com/nexus/3/latest-unix.tar.gz
+    6  sudo tar -xvf nexus.tar.gz
+    7  sudo mv nexus-3* nexus
+    8  sudo adduser nexus
+    9  sudo chown -R nexus:nexus /app/nexus
+   10  sudo chown -R nexus:nexus /app/sonatype-work
+   11  sudo vi  /app/nexus/bin/nexus.rc
+   12   sudo vi /app/nexus/bin/nexus.vmoptions
+   13  sudo vi /etc/systemd/system/nexus.service
+   14  sudo chkconfig nexus on
+   15  service nexus start
+   16  service nexus status
+   17  cat /app/sonatype-work/nexus3/admin.password
+   18  sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+   19    sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+   20  amazon-linux-extras install java-openjdk11 -y
+   21  yum install jenkins -y
+   22  service jenkins start
+   23  update-alternatives --config java
+   24  service jenkins start
+   25  cat /var/lib/jenkins/secrets/initialAdminPassword
+   26  yum install maven -y
+   27  mvn --version
+   28  file $(which java)
+   29  file /etc/alternatives/java
+   30  git --version
+   31  yum install git -y
+   32  java -version
+   33  update-alternatives --config java
+   34  java -version
